@@ -79,6 +79,9 @@ public class Main {
         System.out.println("Buscar 99 (Não Existe): " + arvoreAVL.buscarAVL(99)); 
         
         System.out.println("\n==================================================");
-   
+        System.out.println("TESTES");
+        System.out.println("==================================================");
+
+        
     }
 }
