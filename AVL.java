@@ -28,7 +28,7 @@ public class AVL {
         this.raiz = inserirRecursivoAVL(this.raiz, valor);
     }
 
-    public boolean buscarAVL(int valor) {
+    public boolean buscar(int valor) {
         return buscarRecursivoAVL(this.raiz, valor);
     }
 

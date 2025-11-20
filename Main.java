@@ -75,13 +75,13 @@ public class Main {
         arvoreAVL.inserir(50);
         
         System.out.println("\nBusca na AVL Balanceada:");
-        System.out.println("Buscar 20 (Existe): " + arvoreAVL.buscarAVL(20)); 
-        System.out.println("Buscar 99 (Não Existe): " + arvoreAVL.buscarAVL(99)); 
+        System.out.println("Buscar 20 (Existe): " + arvoreAVL.buscar(20)); 
+        System.out.println("Buscar 99 (Não Existe): " + arvoreAVL.buscar(99)); 
         
         System.out.println("\n==================================================");
         System.out.println("TESTES");
         System.out.println("==================================================");
 
-        
+
     }
 }
