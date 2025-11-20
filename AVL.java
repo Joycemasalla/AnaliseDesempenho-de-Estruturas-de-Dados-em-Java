@@ -16,25 +16,23 @@ public class AVL {
         if (no == null) {
             return 0;
         }
-        // FB > 1 (Desequilíbrio para a Direita) | FB < -1 (Desequilíbrio para a
-        // Esquerda)
+        // FB > 1 (Desequilíbrio para a Direita) | FB < -1 (Desequilíbrio para a  Esquerda)
         return calcularAltura(no.direita) - calcularAltura(no.esquerda);
     }
 
     private void atualizarAltura(No no) {
-        no.altura = 1 + Math.max(calcularAltura(no.direita), calcularAltura(no.esquerda)); // Altura do nó é 1 + altura
-                                                                                           // máxima dos filhos
+        no.altura = 1 + Math.max(calcularAltura(no.direita), calcularAltura(no.esquerda)); // Altura do nó é 1 + altura máxima dos filhos
     }
 
-    private void inserirAVL(int valor) {
+    public void inserir(int valor) {
         this.raiz = inserirRecursivoAVL(this.raiz, valor);
     }
 
-    private void buscarAVL(int valor) {
+    public boolean buscarAVL(int valor) {
+        return buscarRecursivoAVL(this.raiz, valor);
     }
 
-    // ROTACAO SIMPLES: GIRA PARA A DIREITA (Corrige desequilíbrio
-    // ESQUERDA-ESQUERDA)
+    // ROTACAO SIMPLES: GIRA PARA A DIREITA (Corrige desequilíbrio ESQUERDA-ESQUERDA)
     // FB <= -2 e o novo nó está na sub-subárvore esquerda.
 
     private No rotacaoParaDireita(No desbalanceado) { // a arvore esta toda pra esquerda
@@ -132,6 +130,21 @@ public class AVL {
         }
 
         return raiz;
+    }
+
+    private boolean buscarRecursivoAVL(No raiz, int valor) {
+        if (raiz == null) {
+            return false;
+        }
+        if (raiz.valor == valor) {
+            return true;
+        }
+        if (valor > raiz.valor) {
+            return buscarRecursivoAVL(raiz.direita, valor);
+        } else {
+            return buscarRecursivoAVL(raiz.esquerda, valor);
+        }
+
     }
 
 }
