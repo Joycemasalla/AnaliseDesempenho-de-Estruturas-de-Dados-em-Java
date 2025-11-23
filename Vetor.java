@@ -54,12 +54,14 @@ public class Vetor {
     return false;
   }
 
-  public void ordenarInsertSort() { // pior caso tem que executar o for e o while N vezes -> O(N^2) ; melhor caso  O(N) quando o array já está ordenado
+  public void ordenarInsertSort() { // pior caso tem que executar o for e o while N vezes -> O(N^2) ; melhor caso
+                                    // O(N) quando o array já está ordenado
     int n = this.tamanhoAtual;
     for (int i = 1; i < n; i++) { // N operações -> percorre todo o array que não está ordenado
       int valor = this.elementos[i]; // assume que o valor atual é o segundo elemento do array
       int indiceAnterior = i - 1; // o indice que vamos fazer a comparação - elemento anterior
-      while (indiceAnterior >= 0 && this.elementos[indiceAnterior] > valor) { // enquanto o anterior for maior que o valor, eles vão pra direita
+      while (indiceAnterior >= 0 && this.elementos[indiceAnterior] > valor) { // enquanto o anterior for maior que o
+                                                                              // valor, eles vão pra direita
         this.elementos[indiceAnterior + 1] = this.elementos[indiceAnterior]; // troca de posição
         indiceAnterior--; // vai andando pra esquerda
       }
@@ -67,7 +69,7 @@ public class Vetor {
     }
   }
 
-  private void ordenarQuickSort(int inicio, int fim) { // O(n log n) no caso médio e melhor caso; O(n^2) no pior caso 
+  private void ordenarQuickSort(int inicio, int fim) { // O(n log n) no caso médio e melhor caso; O(n^2) no pior caso
     if (inicio < fim) {
       int indicePivo = partir(inicio, fim);
       ordenarQuickSort(inicio, indicePivo - 1);
@@ -76,24 +78,25 @@ public class Vetor {
   }
 
   private int partir(int inicio, int fim) {
-    int pivo = this.elementos[fim]; // escolhe o último elemento como pivô
-    int i = (inicio - 1); 
+    int meio = (inicio + fim) / 2;
+    int pivo = this.elementos[meio]; // escolhe o pivô como o elemento do meio
+    int i = (inicio - 1);
     for (int j = inicio; j < fim; j++) { // percorre o vetor
       if (this.elementos[j] <= pivo) { // se o elemento atual for menor ou igual ao pivô
-        i++; 
-        int temp = this.elementos[i]; 
-        this.elementos[i] = this.elementos[j]; 
+        i++;
+        int temp = this.elementos[i];
+        this.elementos[i] = this.elementos[j];
         this.elementos[j] = temp;
       }
     }
-    int temp = this.elementos[i + 1]; 
+    int temp = this.elementos[i + 1];
     this.elementos[i + 1] = this.elementos[fim];
     this.elementos[fim] = temp;
-    return i + 1; 
+    return i + 1;
   }
 
   public void ordenarQuickSort() {
-    //  usa o início = 0 e o fim = tamanhoAtual - 1 do vetor
+    // usa o início = 0 e o fim = tamanhoAtual - 1 do vetor
     ordenarQuickSort(0, this.tamanhoAtual - 1);
-}
+  }
 }
