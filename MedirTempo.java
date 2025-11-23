@@ -46,6 +46,49 @@ public class MedirTempo {
         }
         return tempoTotal / repeticoes;
     }
-    
 
+
+    public static long medirBuscaVetorSequencial(Vetor vetor, int elemento) {
+        long tempoTotal = 0;
+        for (int i = 0; i < repeticoes; i++) {
+            long inicio = System.nanoTime();
+            vetor.buscarBinaria(elemento);
+            long fim = System.nanoTime();
+            tempoTotal += (fim - inicio);
+        }
+        return tempoTotal / repeticoes;
+    }
+
+    public static long medirBuscaVetorBinaria(Vetor vetor, int elemento) {
+        long tempoTotal = 0;
+        for (int i = 0; i < repeticoes; i++) {
+            long inicio = System.nanoTime();
+            vetor.buscarBinaria(elemento);
+            long fim = System.nanoTime();
+            tempoTotal += (fim - inicio);
+        }
+        return tempoTotal / repeticoes;
+    }
+
+    public static long medirBuscaABB(ABB arvore, int elemento) {
+        long tempoTotal = 0;
+        for (int i = 0; i < repeticoes; i++) {
+            long inicio = System.nanoTime();
+            arvore.buscar(elemento);
+            long fim = System.nanoTime();
+            tempoTotal += (fim - inicio);
+        }
+        return tempoTotal / repeticoes;
+    }
+
+    public static long medirBuscaAVL(AVL arvore, int elemento) {
+        long tempoTotal = 0;
+        for (int i = 0; i < repeticoes; i++) {
+            long inicio = System.nanoTime();
+            arvore.buscar(elemento);
+            long fim = System.nanoTime();
+            tempoTotal += (fim - inicio);
+        }
+        return tempoTotal / repeticoes;
+    }
 }
