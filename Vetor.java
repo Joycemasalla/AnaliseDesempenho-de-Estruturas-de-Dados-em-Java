@@ -67,11 +67,11 @@ public class Vetor {
     }
   }
 
-  private void ordernarQuickSort(int inicio, int fim) { // O(n log n) no caso médio e melhor caso; O(n^2) no pior caso 
+  private void ordenarQuickSort(int inicio, int fim) { // O(n log n) no caso médio e melhor caso; O(n^2) no pior caso 
     if (inicio < fim) {
       int indicePivo = partir(inicio, fim);
-      ordernarQuickSort(inicio, indicePivo - 1);
-      ordernarQuickSort(indicePivo + 1, fim);
+      ordenarQuickSort(inicio, indicePivo - 1);
+      ordenarQuickSort(indicePivo + 1, fim);
     }
   }
 
@@ -92,8 +92,8 @@ public class Vetor {
     return i + 1; 
   }
 
-  public void ordernarQuickSort() {
+  public void ordenarQuickSort() {
     //  usa o início = 0 e o fim = tamanhoAtual - 1 do vetor
-    ordernarQuickSort(0, this.tamanhoAtual - 1);
+    ordenarQuickSort(0, this.tamanhoAtual - 1);
 }
 }

@@ -86,7 +86,7 @@ public class Main {
 
         int[] tamanhos = { 100, 1000, 10000 };
         String[] ordens = { "Ordenada", "Inversamente Ordenada", "Aleatória" };
-        DadosTeste dadosTeste = new DadosTeste();
+        GerarDados dadosTeste = new GerarDados();
 
         // Cabeçalho da Tabela (Melhor formato para o relatório)
         System.out.printf("| %-30s | %15s | %15s | %15s |%n",
@@ -96,8 +96,7 @@ public class Main {
                 "AVL (ms)");
         System.out.println("|--------------------------------|-----------------|-----------------|-----------------|");
 
-        
-        for (int tamanho : tamanhos) { //vai pegar cada tamanho
+        for (int tamanho : tamanhos) { // vai pegar cada tamanho
 
             // para cada tamanho, vai pegar cada ordem - faz todas as ordens para um tamanho antes de ir para o próximo tamanho
             for (String ordem : ordens) {
@@ -105,7 +104,7 @@ public class Main {
                 int[] dados;
 
                 // gera os dados conforme a ordem
-                if (ordem.equals("Ordenada")) { 
+                if (ordem.equals("Ordenada")) {
                     dados = dadosTeste.gerarDadosOrdenados(tamanho);
                 } else if (ordem.equals("Inversamente Ordenada")) {
                     dados = dadosTeste.gerarDadosInversos(tamanho);
@@ -118,8 +117,9 @@ public class Main {
                 long tempoABB = MedirTempo.medirInsercaoABB(tamanho, dados);
                 long tempoAVL = MedirTempo.medirInsercaoAVL(tamanho, dados);
 
-                //conversão de nanosegundos para milessegundos, usa double para manter a precisão
-               double tempoVetorSeg = tempoVetor / 1_000_000.0; 
+                // conversão de nanosegundos para milessegundos, usa double para manter a
+                // precisão
+                double tempoVetorSeg = tempoVetor / 1_000_000.0;
                 double tempoABBSeg = tempoABB / 1_000_000.0;
                 double tempoAVLSeg = tempoAVL / 1_000_000.0;
 
