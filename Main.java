@@ -191,7 +191,7 @@ public class Main {
                         elementoBuscado = estruturas.meioElemento;
                     } else if (tipoBusca.equals("Último Elemento")) {
                         elementoBuscado = estruturas.ultimoElemento;
-                    } else if (tipoBusca.equals("Elemento Inexistente")) {
+                    } else if (tipoBusca.equals("Inexistente")) {
                         elementoBuscado = estruturas.elementoInexistente;
                     } else if (tipoBusca.equals("Elemento Aleatório 1/3")) {
                         elementoBuscado = estruturas.elementosAleatorios[0];

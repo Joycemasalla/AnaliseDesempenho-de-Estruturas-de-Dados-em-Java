@@ -51,7 +51,7 @@ public class MedirTempo {
         long tempoTotal = 0;
         for (int i = 0; i < repeticoes; i++) {
             long inicio = System.nanoTime();
-            vetor.buscarBinaria(elemento);
+            vetor.buscarSequencial(elemento);
             long fim = System.nanoTime();
             tempoTotal += (fim - inicio);
         }

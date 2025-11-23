@@ -15,7 +15,7 @@ public class GerarDados {
     public int[] gerarDadosInversos(int quantidadeElementos) {
         int[] dados = new int[quantidadeElementos];
         for (int i = 0; i < quantidadeElementos; i++) {
-            dados[i] = quantidadeElementos - i;
+            dados[i] = quantidadeElementos - i - 1;
         }
         return dados;
     }
@@ -23,9 +23,16 @@ public class GerarDados {
     // Aleatórios
     public int[] gerarDadosAleatorios(int quantidadeElementos) {
         int[] dados = new int[quantidadeElementos];
-        Random random = new Random();
         for (int i = 0; i < quantidadeElementos; i++) {
-            dados[i] = random.nextInt(quantidadeElementos);
+            dados[i] = i;
+        }
+        // Embaralhar os dados
+        Random random = new Random();
+        for (int i = quantidadeElementos - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+            int temp = dados[i];
+            dados[i] = dados[j];
+            dados[j] = temp;
         }
         return dados;
     }
