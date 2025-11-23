@@ -14,7 +14,7 @@ public class MedirTempo {
             tempoTotal += (fim - inicio);
         }
         return tempoTotal / repeticoes;
-        
+
     }
 
     public static long medirInsercaoABB(int tamanho, int[] dados) {
@@ -46,7 +46,6 @@ public class MedirTempo {
         }
         return tempoTotal / repeticoes;
     }
-
 
     public static long medirBuscaVetorSequencial(Vetor vetor, int elemento) {
         long tempoTotal = 0;
@@ -91,4 +90,35 @@ public class MedirTempo {
         }
         return tempoTotal / repeticoes;
     }
+
+    public static long medirOrdenacaoInsertSort(int[] dadosOriginais, int tamanho) {
+        long tempoTotal = 0;
+        for (int i = 0; i < repeticoes; i++) {
+            Vetor vetor = new Vetor(tamanho);
+            for (int valor : dadosOriginais) {
+                vetor.inserir(valor);
+            }
+            long inicio = System.nanoTime();
+            vetor.ordenarInsertSort();
+            long fim = System.nanoTime();
+            tempoTotal += (fim - inicio);
+        }
+        return tempoTotal / repeticoes;
+    }
+
+    public static long medirOrdenacaoQuickSort(int[] dadosOriginais, int tamanho) {
+        long tempoTotal = 0;
+        for (int i = 0; i < repeticoes; i++) {
+            Vetor vetor = new Vetor(tamanho);
+            for (int valor : dadosOriginais) {
+                vetor.inserir(valor);
+            }
+            long inicio = System.nanoTime();
+            vetor.ordenarQuickSort();
+            long fim = System.nanoTime();
+            tempoTotal += (fim - inicio);
+        }
+        return tempoTotal / repeticoes;
+    }
+
 }
