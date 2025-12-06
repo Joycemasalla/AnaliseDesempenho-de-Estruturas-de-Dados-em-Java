@@ -102,33 +102,46 @@ public class Main {
                     dados = dadosTeste.gerarDadosAleatorios(tamanho);
                 }
 
-                PopularEstruturas estruturas = new PopularEstruturas(tamanho, dados);
-                estruturas.ordenarVetorParaBusca(); // Ordena o vetor para busca binária
+                // Estruturas com dados na ordem original (para busca sequencial e árvores)
+                PopularEstruturas estruturasOriginais = new PopularEstruturas(tamanho, dados);
+
+                // Vetor ordenado especificamente para busca binária
+                Vetor vetorOrdenado = new Vetor(tamanho);
+                for (int valor : dados) {
+                    vetorOrdenado.inserir(valor);
+                }
+                vetorOrdenado.ordenarQuickSort();
 
                 for (int i = 0; i < tiposBusca.length; i++) {
                     String tipoBusca = tiposBusca[i];
                     int elementoBuscado = 0;
 
                     if (tipoBusca.equals("Primeiro Elemento")) {
-                        elementoBuscado = estruturas.primeiroElemento;
+                        elementoBuscado = estruturasOriginais.primeiroElemento;
                     } else if (tipoBusca.equals("Elemento do Meio")) {
-                        elementoBuscado = estruturas.meioElemento;
+                        elementoBuscado = estruturasOriginais.meioElemento;
                     } else if (tipoBusca.equals("Último Elemento")) {
-                        elementoBuscado = estruturas.ultimoElemento;
+                        elementoBuscado = estruturasOriginais.ultimoElemento;
                     } else if (tipoBusca.equals("Inexistente")) {
-                        elementoBuscado = estruturas.elementoInexistente;
+                        elementoBuscado = estruturasOriginais.elementoInexistente;
                     } else if (tipoBusca.equals("Elemento Aleatório 1/3")) {
-                        elementoBuscado = estruturas.elementosAleatorios[0];
+                        elementoBuscado = estruturasOriginais.elementosAleatorios[0];
                     } else if (tipoBusca.equals("Elemento Aleatório 2/3")) {
-                        elementoBuscado = estruturas.elementosAleatorios[1];
+                        elementoBuscado = estruturasOriginais.elementosAleatorios[1];
                     } else if (tipoBusca.equals("Elemento Aleatório 3/3")) {
-                        elementoBuscado = estruturas.elementosAleatorios[2];
+                        elementoBuscado = estruturasOriginais.elementosAleatorios[2];
                     }
 
-                    long tempoVetorSeq = MedirTempo.medirBuscaVetorSequencial(estruturas.vetor, elementoBuscado);
-                    long tempoVetorBin = MedirTempo.medirBuscaVetorBinaria(estruturas.vetor, elementoBuscado);
-                    long tempoABB = MedirTempo.medirBuscaABB(estruturas.abb, elementoBuscado);
-                    long tempoAVL = MedirTempo.medirBuscaAVL(estruturas.avl, elementoBuscado);
+                    // Busca sequencial no vetor ORIGINAL (não ordenado)
+                    long tempoVetorSeq = MedirTempo.medirBuscaVetorSequencial(estruturasOriginais.vetor,
+                            elementoBuscado);
+
+                    // Busca binária no vetor ORDENADO
+                    long tempoVetorBin = MedirTempo.medirBuscaVetorBinaria(vetorOrdenado, elementoBuscado);
+
+                    // Árvores usam estruturas originais
+                    long tempoABB = MedirTempo.medirBuscaABB(estruturasOriginais.abb, elementoBuscado);
+                    long tempoAVL = MedirTempo.medirBuscaAVL(estruturasOriginais.avl, elementoBuscado);
 
                     // converte para milissegundos
                     double tempoVetorSeqMs = tempoVetorSeq / 1_000_000.0;
