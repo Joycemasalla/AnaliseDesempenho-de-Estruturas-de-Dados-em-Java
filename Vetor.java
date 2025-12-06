@@ -80,18 +80,28 @@ public class Vetor {
   private int partir(int inicio, int fim) {
     int meio = (inicio + fim) / 2;
     int pivo = this.elementos[meio]; // escolhe o pivô como o elemento do meio
-    int i = (inicio - 1);
+
+    // Move o pivô para o fim temporariamente
+    int temp = this.elementos[meio];
+    this.elementos[meio] = this.elementos[fim];
+    this.elementos[fim] = temp;
+
+    int i = inicio - 1;
+
     for (int j = inicio; j < fim; j++) { // percorre o vetor
       if (this.elementos[j] <= pivo) { // se o elemento atual for menor ou igual ao pivô
         i++;
-        int temp = this.elementos[i];
+        int swap = this.elementos[i];
         this.elementos[i] = this.elementos[j];
-        this.elementos[j] = temp;
+        this.elementos[j] = swap;
       }
     }
-    int temp = this.elementos[i + 1];
+
+    // Coloca o pivô na posição correta
+    int swap = this.elementos[i + 1];
     this.elementos[i + 1] = this.elementos[fim];
-    this.elementos[fim] = temp;
+    this.elementos[fim] = swap;
+
     return i + 1;
   }
 
